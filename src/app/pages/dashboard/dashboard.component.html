@@ -1,0 +1,6 @@
+<div class="flex">
+  <app-sidebar (friendSelected)="onFriendSelected($event)"></app-sidebar>
+  <div class="flex-grow p-4 ml-64">
+    <app-chat [friendId]="selectedFriendId"></app-chat>
+  </div>
+</div>

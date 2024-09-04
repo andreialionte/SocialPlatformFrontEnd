@@ -1,0 +1,51 @@
+<div class="min-h-screen flex items-center justify-center bg-gray-100">
+    <div class="w-full max-w-4xl p-8 bg-white rounded-xl shadow-lg grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div class="flex items-center justify-center">
+        <img src="TalkLogo.png" alt="Photo" class="w-full h-auto rounded-xl shadow-md">
+      </div>
+  
+      <div class="flex flex-col justify-center p-6 bg-gray-50 rounded-xl shadow-inner">
+        <p class="text-3xl font-semibold text-gray-800 mb-6 text-center md:text-left">Talkative</p>
+        <form [formGroup]="registerForm" (ngSubmit)="register()" class="space-y-6">
+          <mat-form-field appearance="fill" class="w-full">
+            <mat-label>Email</mat-label>
+            <input matInput type="email" formControlName="email" placeholder="Ex. bob@example.com"
+              class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <mat-error *ngIf="emailFormControl?.hasError('required')">Email is required</mat-error>
+            <mat-error *ngIf="emailFormControl?.hasError('email')">Please enter a valid email</mat-error>
+          </mat-form-field>
+  
+          <mat-form-field appearance="fill" class="w-full">
+            <mat-label>Username</mat-label>
+            <input matInput type="text" formControlName="username" placeholder="Ex. bob"
+              class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <mat-error *ngIf="usernameFormControl?.hasError('required')">Username is required</mat-error>
+          </mat-form-field>
+  
+          <mat-form-field appearance="fill" class="w-full">
+            <mat-label>Password</mat-label>
+            <input matInput type="password" formControlName="password" placeholder="Your password"
+              class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <mat-hint>Errors appear instantly!</mat-hint>
+            <mat-error *ngIf="passwordFormControl?.hasError('required')">Password is required</mat-error>
+            <mat-error *ngIf="passwordFormControl?.hasError('minlength')">Password must be at least 6 characters long</mat-error>
+          </mat-form-field>
+  
+          <mat-form-field appearance="fill" class="w-full">
+            <mat-label>Confirm Password</mat-label>
+            <input matInput type="password" formControlName="confirmPassword" placeholder="Confirm your password"
+              class="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+            <mat-hint>Errors appear instantly!</mat-hint>
+            <mat-error *ngIf="confirmPasswordFormControl?.hasError('required')">Confirm Password is required</mat-error>
+            <mat-error *ngIf="passwordMismatch()">Passwords must match</mat-error>
+          </mat-form-field>
+  
+          <button mat-raised-button color="primary" type="submit"
+            class="w-full p-3 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
+            Submit
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  
